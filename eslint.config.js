@@ -50,7 +50,7 @@ export default [
   // Node code: tool configs, scaffolding scripts, and Playwright specs
   {
     files: ['*.{js,mjs,cjs}', 'scripts/**/*.{js,mjs,cjs}', '.storybook/main.js', 'src/**/e2e/**/*.js'],
-    languageOptions: { globals: globals.node },
+    languageOptions: { globals: { ...globals.node, ...globals.browser } },
   },
 
   prettier,
