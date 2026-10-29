@@ -1,0 +1,188 @@
+/* ============================================================
+   NaevoUI Design Tokens
+
+   Usage: import this file at the root of your app or
+   include it in your component's static styles.
+
+   All components reference these tokens via var(--naevo-*).
+   Consumers can override any token to re-theme.
+   ============================================================ */
+
+:root {
+  /* ----------------------------------------------------------
+     Brand Palette
+     ---------------------------------------------------------- */
+
+  /* Primary — Strong Cyan */
+  --naevo-color-primary-lightest: #e0f7f8;
+  --naevo-color-primary-light: #80e4e5;
+  --naevo-color-primary: #33ced0;
+  --naevo-color-primary-dark: #28a5a7;
+  --naevo-color-primary-darkest: #1d7a7b;
+
+  /* Secondary — Laser Blue */
+  --naevo-color-secondary-lightest: #dce3f3;
+  --naevo-color-secondary-light: #6b8ad8;
+  --naevo-color-secondary: #2b59c3;
+  --naevo-color-secondary-dark: #21449a;
+  --naevo-color-secondary-darkest: #182f6e;
+
+  /* Accent — Blush Rose */
+  --naevo-color-accent-lightest: #f5dce3;
+  --naevo-color-accent-light: #e49aae;
+  --naevo-color-accent: #d36582;
+  --naevo-color-accent-dark: #b84d68;
+  --naevo-color-accent-darkest: #8f3a50;
+
+  /* ----------------------------------------------------------
+     Semantic Colors
+     ---------------------------------------------------------- */
+
+  /* Success */
+  --naevo-color-success-light: #d4edda;
+  --naevo-color-success: #2ecc71;
+  --naevo-color-success-dark: #1fa85a;
+
+  /* Warning */
+  --naevo-color-warning-light: #fff3cd;
+  --naevo-color-warning: #f0b429;
+  --naevo-color-warning-dark: #c9961e;
+
+  /* Error / Danger */
+  --naevo-color-error-light: #fde2e2;
+  --naevo-color-error: #e74c3c;
+  --naevo-color-error-dark: #c0392b;
+
+  /* Info — reuses secondary */
+  --naevo-color-info-light: var(--naevo-color-secondary-lightest);
+  --naevo-color-info: var(--naevo-color-secondary);
+  --naevo-color-info-dark: var(--naevo-color-secondary-dark);
+
+  /* ----------------------------------------------------------
+     Neutrals
+     ---------------------------------------------------------- */
+  --naevo-color-black: #000000;
+  --naevo-color-white: #ffffff;
+  --naevo-color-gray-50: #fafafa;
+  --naevo-color-gray-100: #f5f5f5;
+  --naevo-color-gray-200: #e5e5e5;
+  --naevo-color-gray-300: #d4d4d4;
+  --naevo-color-gray-400: #a3a3a3;
+  --naevo-color-gray-500: #737373;
+  --naevo-color-gray-600: #525252;
+  --naevo-color-gray-700: #404040;
+  --naevo-color-gray-800: #262626;
+  --naevo-color-gray-900: #171717;
+
+  /* ----------------------------------------------------------
+     Light Theme (default)
+     ---------------------------------------------------------- */
+  --naevo-bg: var(--naevo-color-white);
+  --naevo-bg-subtle: var(--naevo-color-gray-50);
+  --naevo-bg-muted: var(--naevo-color-gray-100);
+
+  --naevo-text: var(--naevo-color-gray-900);
+  --naevo-text-subtle: var(--naevo-color-gray-600);
+  --naevo-text-muted: var(--naevo-color-gray-400);
+  --naevo-text-inverse: var(--naevo-color-white);
+
+  --naevo-border: var(--naevo-color-gray-200);
+  --naevo-border-strong: var(--naevo-color-gray-400);
+
+  --naevo-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --naevo-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  /* ----------------------------------------------------------
+     Interactive States
+     ---------------------------------------------------------- */
+  --naevo-focus-ring: 0 0 0 3px rgba(51, 206, 208, 0.4);
+  --naevo-disabled-opacity: 0.5;
+
+  /* ----------------------------------------------------------
+     Spacing
+     ---------------------------------------------------------- */
+  --naevo-space-xs: 4px;
+  --naevo-space-sm: 8px;
+  --naevo-space-md: 16px;
+  --naevo-space-lg: 24px;
+  --naevo-space-xl: 32px;
+  --naevo-space-2xl: 48px;
+
+  /* ----------------------------------------------------------
+     Typography
+     ---------------------------------------------------------- */
+  --naevo-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --naevo-font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+
+  --naevo-font-size-xs: 0.75rem;
+  --naevo-font-size-sm: 0.875rem;
+  --naevo-font-size-md: 1rem;
+  --naevo-font-size-lg: 1.25rem;
+  --naevo-font-size-xl: 1.5rem;
+
+  --naevo-font-weight-normal: 400;
+  --naevo-font-weight-medium: 500;
+  --naevo-font-weight-bold: 700;
+
+  --naevo-line-height: 1.5;
+
+  /* ----------------------------------------------------------
+     Border Radius
+     ---------------------------------------------------------- */
+  --naevo-radius-sm: 4px;
+  --naevo-radius-md: 8px;
+  --naevo-radius-lg: 12px;
+  --naevo-radius-full: 9999px;
+
+  /* ----------------------------------------------------------
+     Transitions
+     ---------------------------------------------------------- */
+  --naevo-transition-fast: 120ms ease;
+  --naevo-transition-base: 200ms ease;
+  --naevo-transition-slow: 300ms ease;
+}
+
+/* ==============================================================
+   Dark Theme
+   Apply via <html data-theme="dark"> or media query
+   ============================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --naevo-bg: var(--naevo-color-gray-900);
+    --naevo-bg-subtle: var(--naevo-color-gray-800);
+    --naevo-bg-muted: var(--naevo-color-gray-700);
+
+    --naevo-text: var(--naevo-color-gray-50);
+    --naevo-text-subtle: var(--naevo-color-gray-400);
+    --naevo-text-muted: var(--naevo-color-gray-600);
+    --naevo-text-inverse: var(--naevo-color-gray-900);
+
+    --naevo-border: var(--naevo-color-gray-700);
+    --naevo-border-strong: var(--naevo-color-gray-500);
+
+    --naevo-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --naevo-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+    --naevo-focus-ring: 0 0 0 3px rgba(51, 206, 208, 0.5);
+  }
+}
+
+:root[data-theme='dark'] {
+  --naevo-bg: var(--naevo-color-gray-900);
+  --naevo-bg-subtle: var(--naevo-color-gray-800);
+  --naevo-bg-muted: var(--naevo-color-gray-700);
+
+  --naevo-text: var(--naevo-color-gray-50);
+  --naevo-text-subtle: var(--naevo-color-gray-400);
+  --naevo-text-muted: var(--naevo-color-gray-600);
+  --naevo-text-inverse: var(--naevo-color-gray-900);
+
+  --naevo-border: var(--naevo-color-gray-700);
+  --naevo-border-strong: var(--naevo-color-gray-500);
+
+  --naevo-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --naevo-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+  --naevo-focus-ring: 0 0 0 3px rgba(51, 206, 208, 0.5);
+}
