@@ -44,9 +44,9 @@ export default [
     languageOptions: { globals: globals.mocha },
   },
 
-  // Node code: tool configs and Playwright specs
+  // Node code: tool configs, scaffolding scripts, and Playwright specs
   {
-    files: ['*.{js,mjs,cjs}', '.storybook/main.js', 'packages/*/e2e/**/*.js'],
+    files: ['*.{js,mjs,cjs}', 'scripts/**/*.{js,mjs,cjs}', '.storybook/main.js', 'packages/*/e2e/**/*.js'],
     languageOptions: { globals: globals.node },
   },
 

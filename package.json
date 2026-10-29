@@ -11,6 +11,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "new": "node scripts/new-package.mjs",
     "start": "npm run analyze && storybook dev -p 8000",
     "test": "wtr",
     "test:watch": "wtr --watch",
