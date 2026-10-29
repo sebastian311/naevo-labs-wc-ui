@@ -1,6 +1,6 @@
 {
   "name": "naevo-ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Naevo Labs Web Component library (Lit)",
   "license": "MIT",
   "type": "module",
@@ -35,8 +35,8 @@
     "analyze": "cem analyze",
     "build": "npm run analyze && rollup -c",
     "build-storybook": "npm run analyze && storybook build",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
+    "changelog": "changeset",
+    "version-bump": "changeset version",
     "release": "npm run lint && npm run test && npm run build && changeset publish"
   },
   "dependencies": {
