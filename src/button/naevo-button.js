@@ -58,7 +58,7 @@ export class NaevoButton extends LitElement {
 
       /* Default = primary look (fallback when no variant attr is set) */
       background: var(--naevo-color-primary, #33CED0);
-      color: var(--naevo-color-white, #fff);
+      color: var(--naevo-color-gray-900, #171717);
       border: 2px solid transparent;
     }
 
@@ -77,7 +77,7 @@ export class NaevoButton extends LitElement {
     /* ── Primary (explicit) ───────────────────────────────── */
     :host([primary]) button {
       background: var(--naevo-color-primary, #33CED0);
-      color: var(--naevo-color-white, #fff);
+      color: var(--naevo-color-gray-900, #171717);
     }
 
     :host([primary]) button:hover {
@@ -101,7 +101,7 @@ export class NaevoButton extends LitElement {
 
     :host([secondary]) button:active {
       background: var(--naevo-color-secondary-light, #6b8ad8);
-      color: var(--naevo-color-white, #fff);
+      color: var(--naevo-color-gray-900, #171717);
     }
 
     /* ── Tertiary (ghost / text) ──────────────────────────── */
@@ -118,7 +118,7 @@ export class NaevoButton extends LitElement {
 
     :host([tertiary]) button:active {
       background: var(--naevo-color-accent-light, #e49aae);
-      color: var(--naevo-color-white, #fff);
+      color: var(--naevo-color-gray-900, #171717);
     }
 
     /* ── Slots ────────────────────────────────────────────── */
