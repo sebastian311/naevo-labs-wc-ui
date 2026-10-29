@@ -1,5 +1,7 @@
 import { setCustomElementsManifest } from '@storybook/web-components-vite';
 import customElements from '../custom-elements.json' with { type: 'json' };
+// Design tokens on :root, so stories render with the real theme instead of the var() fallbacks
+import '../src/styles/tokens.css';
 
 // Feed the Custom Elements Manifest to Storybook → auto-generated controls & docs tables
 setCustomElementsManifest(customElements);

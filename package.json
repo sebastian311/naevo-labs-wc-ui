@@ -1,12 +1,23 @@
 {
-  "name": "Naevo Labs Web Component library",
+  "name": "naevo-ui",
   "version": "1.0.0",
-  "private": true,
-  "description": "Naevo Labs Web Component library (Lit) — monorepo root",
+  "description": "Naevo Labs Web Component library (Lit)",
+  "license": "MIT",
   "type": "module",
-  "workspaces": [
-    "packages/*"
+  "exports": {
+    "./tokens.css": "./dist/styles/tokens.css",
+    "./*": "./dist/*/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "custom-elements.json"
   ],
+  "sideEffects": [
+    "**/naevo-*.js",
+    "**/*.css"
+  ],
+  "customElements": "custom-elements.json",
   "engines": {
     "node": ">=20"
   },
@@ -22,11 +33,14 @@
     "lint": "eslint . && prettier --check .",
     "format": "eslint . --fix && prettier --write .",
     "analyze": "cem analyze",
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run analyze && rollup -c",
     "build-storybook": "npm run analyze && storybook build",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "npm run lint && npm run test && npm run build && changeset publish"
+  },
+  "dependencies": {
+    "lit": "^3.3.3"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
@@ -47,11 +61,12 @@
     "eslint-plugin-lit": "^2.3.1",
     "eslint-plugin-wc": "^3.1.0",
     "globals": "^17.13.0",
-    "lit": "^3.3.3",
     "prettier": "^3.9.10",
     "rollup": "^4.65.1",
     "storybook": "^10.6.4",
     "vite": "^8.3.5"
   },
-  "customElements": "custom-elements.json"
+  "publishConfig": {
+    "access": "public"
+  }
 }

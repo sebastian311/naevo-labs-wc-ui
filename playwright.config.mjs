@@ -3,12 +3,12 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * Playwright Test — end-to-end / behavioural tests.
  * Drives the component demo pages served by @web/dev-server, like a real user would.
- * Specs live next to each component: packages/<name>/e2e/*.spec.js
+ * Specs live next to each component: src/<name>/e2e/*.spec.js
  */
 const PORT = 8765;
 
 export default defineConfig({
-  testDir: './packages',
+  testDir: './src',
   testMatch: '**/e2e/**/*.spec.js',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

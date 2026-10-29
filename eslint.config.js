@@ -24,29 +24,32 @@ export default [
 
   // Browser code: components, unit tests, stories, Storybook preview
   {
-    files: ['packages/*/{src,test,stories}/**/*.js', '.storybook/preview.js'],
+    files: ['src/**/*.js', '.storybook/preview.js'],
+    ignores: ['src/**/e2e/**'],
     languageOptions: { globals: globals.browser },
   },
 
-  // Component source: Lit template rules + Custom Element best practices
+  // Component source only: Lit template rules + Custom Element best practices
   {
-    files: ['packages/*/src/**/*.js'],
     ...lit.configs['flat/recommended'],
+    files: ['src/**/*.js'],
+    ignores: ['src/**/{test,stories,e2e}/**'],
   },
   {
-    files: ['packages/*/src/**/*.js'],
     ...wc.configs['flat/best-practice'],
+    files: ['src/**/*.js'],
+    ignores: ['src/**/{test,stories,e2e}/**'],
   },
 
   // Unit tests run under Mocha (describe / it / beforeEach ...)
   {
-    files: ['packages/*/test/**/*.js'],
+    files: ['src/**/test/**/*.js'],
     languageOptions: { globals: globals.mocha },
   },
 
   // Node code: tool configs, scaffolding scripts, and Playwright specs
   {
-    files: ['*.{js,mjs,cjs}', 'scripts/**/*.{js,mjs,cjs}', '.storybook/main.js', 'packages/*/e2e/**/*.js'],
+    files: ['*.{js,mjs,cjs}', 'scripts/**/*.{js,mjs,cjs}', '.storybook/main.js', 'src/**/e2e/**/*.js'],
     languageOptions: { globals: globals.node },
   },
 
