@@ -8,6 +8,7 @@ export default {
     type: { control: 'select',  options: ['text', 'email', 'number', 'password']},
     label: { control: 'text' },
     helperText: { control: 'text' },
+    invalidMessage: { control: 'text' },
     placeholder: { control: 'text' },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
@@ -20,6 +21,7 @@ export default {
     type: 'text',
     label: 'My label',
     helperText: 'This is a helper text.',
+    invalidMessage: 'Invalid control message!',
     placeholder: 'My placeholder',
     disabled: false,
     required: true
@@ -27,12 +29,13 @@ export default {
 };
 
 export const Naevo_Input = {
-  render: ({ type, label, helperText, placeholder, disabled, required }) => html`
+  render: ({ type, label, helperText, placeholder, disabled, required, invalidMessage }) => html`
     <naevo-input
       type=${type}
       label=${label}
       helperText=${helperText}
       placeholder=${placeholder}
+      invalidMessage=${invalidMessage}
       ?disabled=${disabled}
       ?required=${required}
     ></naevo-input>

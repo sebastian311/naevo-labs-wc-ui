@@ -131,10 +131,12 @@ export class NaevoInput extends LitElement {
     label: { type: String },
     helperText: { type: String },
     placeholder: { type: String },
+    invalidMessage: { type: String },
     value: { type: String },
     required: { type: Boolean, reflect: true },
     disabled: { type: Boolean, reflect: true },
-    _isValid: { type: Boolean, state: true }
+    _isValid: { type: Boolean, state: true },
+    _touched: { type: Boolean, state: true }
   };
 
   /** @type {'text'|'number'|'email'|'password'} */
@@ -156,13 +158,16 @@ export class NaevoInput extends LitElement {
     this.label = '';
     this.helperText = '';
     this.placeholder = '';
+    this.invalidMessage = '';
     this.disabled = false;
     this.required = false;
     this.value = '';
     this._isValid = true;
+    this._touched = false;
   }
 
   _onInput(e) {
+    this._touched = true;
     this.value = e.target.value;
     this._validate();
     this.dispatchEvent(new CustomEvent('naevo-input', {
@@ -180,7 +185,7 @@ export class NaevoInput extends LitElement {
   render() {
     const wrapperClasses = [
       'input-wrapper',
-      !this._isValid ? 'input-wrapper--invalid' : '',
+      !this._isValid && this._touched ? 'input-wrapper--invalid' : '',
       this._hasPrefix ? 'has-prefix' : '',
       this._hasSuffix ? 'has-suffix' : ''
     ].filter(Boolean).join(' ');
@@ -208,10 +213,10 @@ export class NaevoInput extends LitElement {
       </div>
 
       ${this.helperText ? html`
-        <div class="helper-text ${!this._isValid ? 'helper-text--invalid' : ''}">
-          ${this.helperText}
+        <div class="helper-text ${!this._isValid && this._touched ? 'helper-text--invalid' : ''}">
+          ${!this._isValid && this._touched ? (this.invalidMessage || 'Invalid input') : this.helperText}
         </div>
-      ` : ''}
+      ` : html`${!this._isValid && this._touched ? (this.invalidMessage || 'Invalid input') : ''}`}
     `;
   }
 }
