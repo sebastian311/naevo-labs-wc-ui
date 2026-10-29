@@ -1,5 +1,5 @@
 {
-  "name": "naevo-labs-wc-ui",
+  "name": "Naevo Labs Web Component library",
   "version": "1.0.0",
   "private": true,
   "description": "Naevo Labs Web Component library (Lit) — monorepo root",

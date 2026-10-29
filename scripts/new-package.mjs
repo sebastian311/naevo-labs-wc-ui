@@ -35,7 +35,7 @@ if (existsSync(pkgDir)) {
 }
 
 const tag = `naevo-${name}`; // custom element names must contain a hyphen — this always does
-const pkgName = `@naevo-labs/${name}`;
+const pkgName = `@naevo-ui/${name}`;
 const className = `Naevo${name
   .split('-')
   .map(part => part[0].toUpperCase() + part.slice(1))
