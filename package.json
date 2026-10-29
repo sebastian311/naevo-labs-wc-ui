@@ -1,0 +1,56 @@
+{
+  "name": "naevo-labs-wc-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Naevo Labs Web Component library (Lit) — monorepo root",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "npm run analyze && storybook dev -p 8000",
+    "test": "wtr",
+    "test:watch": "wtr --watch",
+    "test:coverage": "wtr --coverage",
+    "test:e2e": "playwright test",
+    "test:all": "npm run test && npm run test:e2e",
+    "setup:browsers": "playwright install chromium firefox",
+    "lint": "eslint . && prettier --check .",
+    "format": "eslint . --fix && prettier --write .",
+    "analyze": "cem analyze",
+    "build": "npm run build --workspaces --if-present",
+    "build-storybook": "npm run analyze && storybook build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "npm run lint && npm run test && npm run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.3",
+    "@custom-elements-manifest/analyzer": "^0.11.0",
+    "@eslint/js": "^10.0.1",
+    "@open-wc/testing": "^5.0.0",
+    "@playwright/test": "^1.64.1",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.2",
+    "@storybook/addon-a11y": "^10.6.4",
+    "@storybook/addon-docs": "^10.6.4",
+    "@storybook/web-components-vite": "^10.6.4",
+    "@web/dev-server": "^1.0.0",
+    "@web/test-runner": "^1.0.0",
+    "@web/test-runner-playwright": "^1.0.0",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-lit": "^2.3.1",
+    "eslint-plugin-wc": "^3.1.0",
+    "globals": "^17.13.0",
+    "lit": "^3.3.3",
+    "prettier": "^3.9.10",
+    "rollup": "^4.65.1",
+    "storybook": "^10.6.4",
+    "vite": "^8.3.5"
+  },
+  "customElements": "custom-elements.json"
+}

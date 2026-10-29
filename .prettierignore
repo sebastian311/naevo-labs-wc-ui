@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+storybook-static
+playwright-report
+test-results
+custom-elements.json
+package-lock.json
+.changeset/*.md
