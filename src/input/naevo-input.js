@@ -192,7 +192,7 @@ export class NaevoInput extends LitElement {
 
     return html`
       ${this.label ? html`
-        <label>
+        <label for="input">
           ${this.label}${this.required ? html`<span class="required-marker">*</span>` : ''}
         </label>
       ` : ''}
@@ -201,6 +201,8 @@ export class NaevoInput extends LitElement {
         ${this._hasPrefix ? html`<div class="prefix"><slot name="prefix"></slot></div>` : ''}
 
         <input
+          id="input"
+          aria-label=${this.label || this.placeholder || 'Input'}
           type=${this._inputType}
           placeholder=${this.placeholder}
           ?disabled=${this.disabled}
