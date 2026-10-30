@@ -8,24 +8,19 @@ export default {
     primary: { control: 'boolean' },
     secondary: { control: 'boolean' },
     tertiary: { control: 'boolean' },
-    disabled: { control: 'boolean' }
+    disabled: { control: 'boolean' },
   },
   args: {
     primary: true,
     secondary: false,
     tertiary: false,
-    disabled: false
-  }
+    disabled: false,
+  },
 };
 
 export const Button = {
-  render: ({primary, secondary, tertiary, disabled}) => html`
-    <naevo-button 
-      ?disabled=${disabled}
-      ?primary=${primary}
-      ?secondary=${secondary}
-      ?tertiary=${tertiary}
-    >
+  render: ({ primary, secondary, tertiary, disabled }) => html`
+    <naevo-button ?disabled=${disabled} ?primary=${primary} ?secondary=${secondary} ?tertiary=${tertiary}>
       Button-Text
     </naevo-button>
   `,

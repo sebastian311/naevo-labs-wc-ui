@@ -57,13 +57,14 @@ export class NaevoInput extends LitElement {
       border: 2px solid var(--naevo-color-gray-300, #d4d4d4);
       border-radius: var(--naevo-input-radius, var(--naevo-radius-md, 8px));
       background: var(--naevo-color-white, #fff);
-      transition: border-color var(--naevo-transition-fast, 120ms ease),
-                  box-shadow var(--naevo-transition-fast, 120ms ease);
+      transition:
+        border-color var(--naevo-transition-fast, 120ms ease),
+        box-shadow var(--naevo-transition-fast, 120ms ease);
       overflow: hidden;
     }
 
     .input-wrapper:focus-within {
-      border-color: var(--naevo-color-primary, #33CED0);
+      border-color: var(--naevo-color-primary, #33ced0);
       box-shadow: var(--naevo-focus-ring, 0 0 0 3px rgba(51, 206, 208, 0.4));
     }
 
@@ -136,7 +137,7 @@ export class NaevoInput extends LitElement {
     required: { type: Boolean, reflect: true },
     disabled: { type: Boolean, reflect: true },
     _isValid: { type: Boolean, state: true },
-    _touched: { type: Boolean, state: true }
+    _touched: { type: Boolean, state: true },
   };
 
   /** @type {'text'|'number'|'email'|'password'} */
@@ -170,11 +171,13 @@ export class NaevoInput extends LitElement {
     this._touched = true;
     this.value = e.target.value;
     this._validate();
-    this.dispatchEvent(new CustomEvent('naevo-input', {
-      detail: { value: this.value },
-      bubbles: true,
-      composed: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent('naevo-input', {
+        detail: { value: this.value },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   _validate() {
@@ -187,15 +190,21 @@ export class NaevoInput extends LitElement {
       'input-wrapper',
       !this._isValid && this._touched ? 'input-wrapper--invalid' : '',
       this._hasPrefix ? 'has-prefix' : '',
-      this._hasSuffix ? 'has-suffix' : ''
-    ].filter(Boolean).join(' ');
+      this._hasSuffix ? 'has-suffix' : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     return html`
-      ${this.label ? html`
-        <label for="input">
-          ${this.label}${this.required ? html`<span class="required-marker">*</span>` : ''}
-        </label>
-      ` : ''}
+      ${
+        this.label
+          ? html`
+              <label for="input">
+                ${this.label}${this.required ? html`<span class="required-marker">*</span>` : ''}
+              </label>
+            `
+          : ''
+      }
 
       <div class="${wrapperClasses}">
         ${this._hasPrefix ? html`<div class="prefix"><slot name="prefix"></slot></div>` : ''}
@@ -214,11 +223,15 @@ export class NaevoInput extends LitElement {
         ${this._hasSuffix ? html`<div class="suffix"><slot name="suffix"></slot></div>` : ''}
       </div>
 
-      ${this.helperText ? html`
-        <div class="helper-text ${!this._isValid && this._touched ? 'helper-text--invalid' : ''}">
-          ${!this._isValid && this._touched ? (this.invalidMessage || 'Invalid input') : this.helperText}
-        </div>
-      ` : html`${!this._isValid && this._touched ? (this.invalidMessage || 'Invalid input') : ''}`}
+      ${
+        this.helperText
+          ? html`
+              <div class="helper-text ${!this._isValid && this._touched ? 'helper-text--invalid' : ''}">
+                ${!this._isValid && this._touched ? this.invalidMessage || 'Invalid input' : this.helperText}
+              </div>
+            `
+          : html`${!this._isValid && this._touched ? this.invalidMessage || 'Invalid input' : ''}`
+      }
     `;
   }
 }
