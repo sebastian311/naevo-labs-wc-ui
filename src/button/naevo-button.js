@@ -51,13 +51,14 @@ export class NaevoButton extends LitElement {
       line-height: var(--naevo-line-height, 1.5);
 
       cursor: pointer;
-      transition: background var(--naevo-transition-fast, 120ms ease),
-                  color var(--naevo-transition-fast, 120ms ease),
-                  box-shadow var(--naevo-transition-fast, 120ms ease),
-                  border-color var(--naevo-transition-fast, 120ms ease);
+      transition:
+        background var(--naevo-transition-fast, 120ms ease),
+        color var(--naevo-transition-fast, 120ms ease),
+        box-shadow var(--naevo-transition-fast, 120ms ease),
+        border-color var(--naevo-transition-fast, 120ms ease);
 
       /* Default = primary look (fallback when no variant attr is set) */
-      background: var(--naevo-color-primary, #33CED0);
+      background: var(--naevo-color-primary, #33ced0);
       color: var(--naevo-color-gray-900, #171717);
       border: 2px solid transparent;
     }
@@ -76,7 +77,7 @@ export class NaevoButton extends LitElement {
 
     /* ── Primary (explicit) ───────────────────────────────── */
     :host([primary]) button {
-      background: var(--naevo-color-primary, #33CED0);
+      background: var(--naevo-color-primary, #33ced0);
       color: var(--naevo-color-gray-900, #171717);
     }
 
@@ -91,8 +92,8 @@ export class NaevoButton extends LitElement {
     /* ── Secondary (outlined) ─────────────────────────────── */
     :host([secondary]) button {
       background: transparent;
-      color: var(--naevo-color-secondary, #2B59C3);
-      border-color: var(--naevo-color-secondary, #2B59C3);
+      color: var(--naevo-color-secondary, #2b59c3);
+      border-color: var(--naevo-color-secondary, #2b59c3);
     }
 
     :host([secondary]) button:hover {
@@ -107,7 +108,7 @@ export class NaevoButton extends LitElement {
     /* ── Tertiary (ghost / text) ──────────────────────────── */
     :host([tertiary]) button {
       background: transparent;
-      color: var(--naevo-color-accent, #D36582);
+      color: var(--naevo-color-accent, #d36582);
       border-color: transparent;
       padding-inline: var(--naevo-space-sm, 8px);
     }
@@ -140,9 +141,10 @@ export class NaevoButton extends LitElement {
   }
 
   updated(changedProperties) {
-    const variantChanged = changedProperties.has('primary')
-      || changedProperties.has('secondary')
-      || changedProperties.has('tertiary');
+    const variantChanged =
+      changedProperties.has('primary') ||
+      changedProperties.has('secondary') ||
+      changedProperties.has('tertiary');
 
     if (variantChanged) {
       const count = [this.primary, this.secondary, this.tertiary].filter(Boolean).length;

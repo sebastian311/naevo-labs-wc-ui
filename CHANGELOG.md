@@ -1,5 +1,11 @@
 # naevo-ui
 
+## 1.3.0
+
+### Minor Changes
+
+- Added a versatile select component with keyboard navigation and accessibility support. Slot feature pending work (WIP)
+
 ## 1.2.0
 
 ### Minor Changes

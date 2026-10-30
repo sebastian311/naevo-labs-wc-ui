@@ -34,7 +34,7 @@ describe('naevo-button', () => {
     expect(getComputedStyle(el)?.opacity).to.equal('0.5');
 
     let clicked = false;
-    button.addEventListener('click', () => clicked = true);
+    button.addEventListener('click', () => (clicked = true));
     expect(clicked).to.be.false;
   });
 });

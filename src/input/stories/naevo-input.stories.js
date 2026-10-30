@@ -5,7 +5,7 @@ export default {
   title: 'Input',
   component: 'naevo-input',
   argTypes: {
-    type: { control: 'select',  options: ['text', 'email', 'number', 'password']},
+    type: { control: 'select', options: ['text', 'email', 'number', 'password'] },
     label: { control: 'text' },
     helperText: { control: 'text' },
     invalidMessage: { control: 'text' },
@@ -24,8 +24,8 @@ export default {
     invalidMessage: 'Invalid control message!',
     placeholder: 'My placeholder',
     disabled: false,
-    required: true
-  }
+    required: true,
+  },
 };
 
 export const Naevo_Input = {
