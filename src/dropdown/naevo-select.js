@@ -1,17 +1,20 @@
 import { LitElement, html, css } from 'lit';
+/**
+ * @typedef {{ value: string, label: string }} NaevoSelectOption
+ */
 
 /**
  * @tag naevo-select
  * @summary A versatile select component with keyboard navigation and accessibility support.
  *
- * @slot customOption - Content placed instead of the default option.
- *
- * @attr {string} label - Visible label above the input
- * @attr {string} placeholder - Placeholder text inside the input
+ * @attr {string} label - Visible label above the select
+ * @attr {string} placeholder - Placeholder text shown when nothing is selected
  * @attr {string} value - The selected option's value
- * @attr {Array} options - An options array that will be displayed within the options panel
- * @attr {boolean} disabled - Disables the input
- * @attr {boolean} required - Marks the input as required
+ * @prop {NaevoSelectOption[]} options - Options displayed in the options panel
+ * @attr {boolean} disabled - Disables the select
+ * @attr {boolean} required - Marks the select as required
+ *
+ * @fires naevo-select - Fired when an option is selected. `detail: { value }`
  */
 export class NaevoSelect extends LitElement {
   static styles = css`
@@ -64,7 +67,7 @@ export class NaevoSelect extends LitElement {
     }
 
     .select-value.placeholder {
-      color: var(--naevo-color-gray-400, #a3a3a3);
+      color: var(--naevo-color-gray-500, #737373);
     }
 
     .arrow {

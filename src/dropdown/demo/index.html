@@ -1,12 +1,24 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>naevo-dropdown</title>
-    <link rel="stylesheet" href="/src/styles/tokens.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>naevo-select demo</title>
+    <style>
+      body { font-family: system-ui, sans-serif; padding: 24px; max-width: 400px; }
+    </style>
   </head>
   <body>
-    <naevo-dropdown>Hello from naevo-dropdown</naevo-dropdown>
-    <script type="module" src="/src/dropdown/index.js"></script>
+    <naevo-select label="Fruit" placeholder="Pick a fruit" required></naevo-select>
+
+    <script type="module">
+      import '../naevo-select.js';
+
+      document.querySelector('naevo-select').options = [
+        { value: 'apple', label: 'Apples' },
+        { value: 'pear', label: 'Pears' },
+        { value: 'banana', label: 'Bananas' },
+      ];
+    </script>
   </body>
 </html>
