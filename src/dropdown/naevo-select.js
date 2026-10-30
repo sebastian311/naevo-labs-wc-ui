@@ -213,16 +213,18 @@ export class NaevoSelect extends LitElement {
   }
 
   render() {
-    const selectedOption = this.options.find((opt) => opt.value === this.value);
+    const selectedOption = this.options.find(opt => opt.value === this.value);
 
     return html`
-      ${this.label
-        ? html`
-            <label id="label">
-              ${this.label}${this.required ? html`<span class="required-marker">*</span>` : ''}
-            </label>
-          `
-        : ''}
+      ${
+        this.label
+          ? html`
+              <label id="label">
+                ${this.label}${this.required ? html`<span class="required-marker">*</span>` : ''}
+              </label>
+            `
+          : ''
+      }
 
       <div
         class="select-wrapper"
@@ -234,9 +236,7 @@ export class NaevoSelect extends LitElement {
         aria-labelledby=${this.label ? 'label' : ''}
         aria-required=${this.required ? 'true' : 'false'}
         aria-disabled=${this.disabled ? 'true' : 'false'}
-        aria-activedescendant=${this._open && this._activeIndex !== null
-          ? `option-${this._activeIndex}`
-          : ''}
+        aria-activedescendant=${this._open && this._activeIndex !== null ? `option-${this._activeIndex}` : ''}
         @click=${this._onClick}
         @keydown=${this._onKeydown}
         @blur=${this._onBlur}
@@ -247,31 +247,33 @@ export class NaevoSelect extends LitElement {
         <span class="arrow">${this._open ? '▲' : '▼'}</span>
       </div>
 
-      ${this._open
-        ? html`
-            <ul
-              id="listbox"
-              class="options-panel"
-              role="listbox"
-              aria-labelledby=${this.label ? 'label' : ''}
-              @mousedown=${(e) => e.preventDefault()}
-            >
-              ${this.options.map(
-                (opt, i) => html`
-                  <li
-                    id="option-${i}"
-                    class="option ${this.value === opt.value ? 'selected' : ''} ${this._activeIndex === i ? 'active' : ''}"
-                    role="option"
-                    aria-selected=${this.value === opt.value ? 'true' : 'false'}
-                    @click=${() => this._onSelect(opt)}
-                  >
-                    ${opt.label}
-                  </li>
-                `,
-              )}
-            </ul>
-          `
-        : ''}
+      ${
+        this._open
+          ? html`
+              <ul
+                id="listbox"
+                class="options-panel"
+                role="listbox"
+                aria-labelledby=${this.label ? 'label' : ''}
+                @mousedown=${e => e.preventDefault()}
+              >
+                ${this.options.map(
+                  (opt, i) => html`
+                    <li
+                      id="option-${i}"
+                      class="option ${this.value === opt.value ? 'selected' : ''} ${this._activeIndex === i ? 'active' : ''}"
+                      role="option"
+                      aria-selected=${this.value === opt.value ? 'true' : 'false'}
+                      @click=${() => this._onSelect(opt)}
+                    >
+                      ${opt.label}
+                    </li>
+                  `,
+                )}
+              </ul>
+            `
+          : ''
+      }
     `;
   }
 }

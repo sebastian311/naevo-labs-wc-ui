@@ -11,10 +11,13 @@ const OPTIONS = [
 test.describe('naevo-select', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(DEMO_URL);
-    await page.locator('naevo-select').first().evaluate((el, opts) => {
-      el.options = opts;
-      el.value = '';
-    }, OPTIONS);
+    await page
+      .locator('naevo-select')
+      .first()
+      .evaluate((el, opts) => {
+        el.options = opts;
+        el.value = '';
+      }, OPTIONS);
   });
 
   test('demo renders', async ({ page }) => {
@@ -50,10 +53,13 @@ test.describe('naevo-select', () => {
   });
 
   test('fires naevo-select event with the selected value', async ({ page }) => {
-    await page.locator('naevo-select').first().evaluate((el) => {
-      window.__selectEvents = [];
-      el.addEventListener('naevo-select', (e) => window.__selectEvents.push(e.detail.value));
-    });
+    await page
+      .locator('naevo-select')
+      .first()
+      .evaluate(el => {
+        window.__selectEvents = [];
+        el.addEventListener('naevo-select', e => window.__selectEvents.push(e.detail.value));
+      });
 
     await page.getByRole('combobox').first().click();
     await page.getByRole('option', { name: 'Bananas' }).click();
@@ -133,9 +139,12 @@ test.describe('naevo-select', () => {
   });
 
   test('disabled select is not focusable', async ({ page }) => {
-    await page.locator('naevo-select').first().evaluate((el) => {
-      el.disabled = true;
-    });
+    await page
+      .locator('naevo-select')
+      .first()
+      .evaluate(el => {
+        el.disabled = true;
+      });
 
     const trigger = page.getByRole('combobox').first();
     await expect(trigger).toHaveAttribute('tabindex', '-1');

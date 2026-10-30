@@ -7,17 +7,16 @@ const OPTIONS = [
   { value: 'banana', label: 'Bananas' },
 ];
 
-const getTrigger = (el) => el.shadowRoot.querySelector('.select-wrapper');
-const getListbox = (el) => el.shadowRoot.querySelector('[role="listbox"]');
-const getOptions = (el) => el.shadowRoot.querySelectorAll('[role="option"]');
+const getTrigger = el => el.shadowRoot.querySelector('.select-wrapper');
+const getListbox = el => el.shadowRoot.querySelector('[role="listbox"]');
+const getOptions = el => el.shadowRoot.querySelectorAll('[role="option"]');
 
 const press = async (el, key) => {
   getTrigger(el).dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, composed: true }));
   await el.updateComplete;
 };
 
-const createSelect = () =>
-  fixture(html`<naevo-select label="Fruit" .options=${OPTIONS}></naevo-select>`);
+const createSelect = () => fixture(html`<naevo-select label="Fruit" .options=${OPTIONS}></naevo-select>`);
 
 describe('naevo-select', () => {
   // ---------- Rendering ----------
